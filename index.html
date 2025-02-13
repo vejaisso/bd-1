@@ -1,39 +1,112 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banco de Dados I - Conteúdo Programático</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            font-size: 18px;
-            color: #555;
-        }
-    </style>
+    <title>Cronograma de Aulas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Conteúdo Programático de Banco de Dados I</h1>
-        <p>Ensino Médio e Técnico em Desenvolvimento de Sistemas</p>
-    </div>
+    <header>
+        <h1>Cronograma de Aulas - Banco de Dados I</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aula</th>
+                    <th>Título</th>
+                    <th>Material Online</th>
+                    <th>Atividade Prévia</th>
+                    <th>Atividade Prática</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Evolução e Operacionalização</td>
+                    <td><a href="#">Apostila PDF</a></td>
+                    <td><a href="#">Questionário</a></td>
+                    <td><a href="#">Exercício</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Estrutura de Banco de Dados</td>
+                    <td><a href="#">Slides</a></td>
+                    <td><a href="#">Resumo</a></td>
+                    <td><a href="#">Criação de Tabelas</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 15px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+
+/* script.js */
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+});
+
+body.dark-mode {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode table {
+    background: #444;
+    color: white;
+}
+
+.dark-mode th {
+    background: #222;
+}
+</style>
