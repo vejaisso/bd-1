@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Situação-Problema: o Roubo do Código Proibido</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1a0ef7c0-1d61-8097-b72a-c756b96d92ef" class="page sans"><header><h1 class="page-title">Situação-Problema: o Roubo do Código Proibido</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Aplicado</th><td><div class="checkbox checkbox-off"></div></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Categoria</th><td><span class="selected-value select-value-color-gray">Situação-Problema</span></td></tr></tbody></table></header><div class="page-body"><h3 id="1a0ef7c0-1d61-80d6-a4ac-f230e01d5a17" class=""><strong>📜 Contexto: O Mistério do Código Perdido</strong></h3><figure class="block-color-default_background callout" style="white-space:pre-wrap;display:flex" id="1a0ef7c0-1d61-80eb-b476-fe304b16ddf3"><div style="font-size:1.5em"><span class="icon">💽</span></div><div style="width:100%"><p id="1a0ef7c0-1d61-8089-abfc-d1659c76a130" class="">Na <strong>escola técnica de Desenvolvimento de Sistemas</strong>, o professor responsável pelo laboratório de informática <strong>gerenciava um servidor</strong> onde todos os alunos <strong>salvavam seus projetos de programação, TCCs e códigos importantes</strong> para as disciplinas. Esse servidor é acessado por um <strong>código de administrador</strong> que permite editar e até excluir arquivos. Esse código foi armazenado de forma <strong>segura em um pendrive vermelho</strong>, que estava sempre <strong>guardado em sua gaveta pessoal</strong> no laboratório. </p><p id="1a0ef7c0-1d61-80af-8540-c7bbb21a8bfc" class=""><strong>Porém, o pendrive sumiu misteriosamente.</strong> Ninguém sabe onde ele foi parar. Sem o código, o professor não tem como acessar nem modificar os projetos dos alunos, e os <strong>projetos de TCC de diversos alunos estão em risco de serem perdidos ou alterados</strong>. </p><p id="1a0ef7c0-1d61-80c6-8a52-e5f2769e629c" class=""><strong>O diretor da escola, preocupado com a situação, convoca uma equipe de investigação para descobrir o que aconteceu.</strong> <strong>VOCÊS foram escolhidos para resolver esse mistério antes que os dados preciosos dos alunos sejam comprometidos.</strong></p></div></figure><h3 id="1a0ef7c0-1d61-8055-a9d5-e56c80dcf1be" class=""><strong>🔎 Objetivo da Investigação</strong></h3><ul id="1a0ef7c0-1d61-80b3-a73d-ee4335568b39" class="bulleted-list"><li style="list-style-type:disc"><strong>Descobrir quem roubou o pendrive vermelho.</strong></li></ul><ul id="1a0ef7c0-1d61-80a3-b65e-fba8f00cbab2" class="bulleted-list"><li style="list-style-type:disc"><strong>Determinar como o pendrive foi retirado do laboratório de informática.</strong></li></ul><ul id="1a0ef7c0-1d61-80af-8b76-ddae5145d8f7" class="bulleted-list"><li style="list-style-type:disc"><strong>Evitar que dados importantes sejam alterados ou apagados.</strong></li></ul><p id="1a0ef7c0-1d61-80f5-91fa-d5a2879273a2" class=""><strong>O tempo é curto, pois o servidor precisa ser acessado antes que o código seja reconfigurado.</strong></p><p id="1a0ef7c0-1d61-8063-b566-c891b97a6fb2" class="">
+</p><hr id="1a0ef7c0-1d61-800b-8b8f-d993d70efa71"/><h2 id="1a0ef7c0-1d61-8020-8e0e-c13ffedc375d" class=""><strong>🔎 PASSO 1 – Formação das Equipes de Detetives (5 min)</strong></h2><ul id="1a0ef7c0-1d61-804a-962c-eaadb4673e23" class="bulleted-list"><li style="list-style-type:disc"><strong>Grupos de investigação: </strong>4 a 5 integrantes por grupo.</li></ul><ul id="1a0ef7c0-1d61-801b-ad81-c058f2539395" class="bulleted-list"><li style="list-style-type:disc">Cada equipe recebe um <strong>dossiê inicial</strong>, contendo as seguintes informações:<ul id="1a0ef7c0-1d61-80c4-b221-e5b307abedfa" class="bulleted-list"><li style="list-style-type:circle"><strong>O que se sabe até agora:</strong><ul id="1a0ef7c0-1d61-806e-bf34-e57e1c6ffe29" class="bulleted-list"><li style="list-style-type:square">O professor guardava um pendrive vermelho em sua gaveta pessoal, no laboratório de informática, com o código de acesso root do servidor onde estão armazenados os projetos de programação e TCCs dos alunos.</li></ul><ul id="1a0ef7c0-1d61-8068-aac0-f180569e6e83" class="bulleted-list"><li style="list-style-type:square">O pendrive sumiu misteriosamente do laboratório e o professor não consegue acessar os dados importantes dos alunos sem ele.</li></ul><ul id="1a0ef7c0-1d61-80a6-ad89-c61417755bd5" class="bulleted-list"><li style="list-style-type:square">O servidor com os projetos precisa ser acessado urgentemente para evitar que os arquivos sejam corrompidos ou apagados.</li></ul></li></ul><ul id="1a0ef7c0-1d61-802e-9f18-d78f2cc91a34" class="bulleted-list"><li style="list-style-type:circle"><strong>Lista de suspeitos:</strong><ol type="1" id="1a0ef7c0-1d61-80bf-aae6-c344a2991f1b" class="numbered-list" start="1"><li><strong>Aluno A:</strong> Frequentemente tem problemas com prazos de entrega e reclamava sobre a perda de tempo ao tentar enviar projetos ao professor.</li></ol><ol type="1" id="1a0ef7c0-1d61-8094-a4fc-c4c0b0e4a44c" class="numbered-list" start="2"><li><strong>Aluno B:</strong> Passou muito tempo no laboratório de informática no último dia em que o pendrive desapareceu, mas disse que estava apenas praticando.</li></ol><ol type="1" id="1a0ef7c0-1d61-8067-b356-db93eeeb4a9c" class="numbered-list" start="3"><li><strong>Professor C:</strong> Tem acesso ao servidor e guarda o pendrive para emergências, mas estava ausente do laboratório no momento do desaparecimento.</li></ol><ol type="1" id="1a0ef7c0-1d61-8072-842b-d90d859eb220" class="numbered-list" start="4"><li><strong>Funcionário D:</strong> Tinha chave do laboratório e entrou para realizar manutenção nos computadores na mesma semana.</li></ol></li></ul><ul id="1a0ef7c0-1d61-80da-b7f4-cde9bbffdfdb" class="bulleted-list"><li style="list-style-type:circle"><strong>Relatos iniciais de testemunhas:</strong><ul id="1a0ef7c0-1d61-80c4-96f3-d6d9b9ce1f74" class="bulleted-list"><li style="list-style-type:square"><strong>Testemunha 1 (Aluno E):</strong> &quot;Vi o professor guardar o pendrive na gaveta no dia anterior ao sumiço, e ninguém mais estava lá.&quot;</li></ul><ul id="1a0ef7c0-1d61-80ab-b849-dfbc32d2cdcb" class="bulleted-list"><li style="list-style-type:square"><strong>Testemunha 2 (Aluno F):</strong> &quot;Ouvi um barulho vindo da gaveta no dia do desaparecimento, mas quando olhei, não vi ninguém por perto.&quot;</li></ul></li></ul><ul id="1a0ef7c0-1d61-805e-9b02-ffe1c29aa904" class="bulleted-list"><li style="list-style-type:circle"><strong>Possíveis locais onde o pendrive pode estar:</strong><ul id="1a0ef7c0-1d61-80fa-a5e4-c751cdb52c80" class="bulleted-list"><li style="list-style-type:square">Dentro do <strong>laboratório de informática</strong>, onde o professor costuma guardar materiais.</li></ul><ul id="1a0ef7c0-1d61-8037-a367-e3edef815b4b" class="bulleted-list"><li style="list-style-type:square"><strong>Próximo ao servidor</strong>, onde o código de acesso poderia ser necessário.</li></ul><ul id="1a0ef7c0-1d61-8072-958d-f371f7eb3ad5" class="bulleted-list"><li style="list-style-type:square"><strong>Área de armazenamento</strong> dos computadores, onde o pendrive poderia ter sido deixado inadvertidamente.</li></ul></li></ul></li></ul><hr id="1a0ef7c0-1d61-8077-aeba-dc383c3acc37"/><h2 id="1a0ef7c0-1d61-80a2-8d37-c06bdfb3c210" class=""><strong>🕵️ PASSO 2 – Recolhendo as Pistas (10 min)</strong></h2><p id="1a0ef7c0-1d61-8021-8505-e063ad69917c" class="">Agora começa a <strong>investigação real</strong>! Cada grupo precisa <strong>decidir quais dados coletar</strong> para resolver o caso e encontrar o código do pendrive desaparecido.</p><h3 id="1a0ef7c0-1d61-80a4-b3ac-ce6f26a196d9" class=""><strong>📁 Arquivo de Pistas (Entregue pelo professor)</strong></h3><ul id="1a0ef7c0-1d61-8089-a8af-d369f2ddd31d" class="bulleted-list"><li style="list-style-type:disc">🖥️ <strong>Última vez que o pendrive foi visto:</strong><p id="1a0ef7c0-1d61-809e-9ccd-eb95f9271a0c" class="">O pendrive foi visto no <strong>laboratório de informática</strong>, <strong>às 10h30</strong>, quando o professor estava terminando de organizar a sala e se preparando para a aula.</p></li></ul><ul id="1a0ef7c0-1d61-803e-9daf-f5a35098dde4" class="bulleted-list"><li style="list-style-type:disc">🎥 <strong>Imagens de câmera:</strong><p id="1a0ef7c0-1d61-8049-a290-c3a5d0eb6344" class="">Câmeras de segurança mostram três pessoas <strong>saindo da sala</strong> nesse horário. As imagens não capturam quem estava <strong>entrando</strong> ou <strong>saindo antes</strong> disso. Os alunos devem <strong>verificar se os suspeitos estão entre as três pessoas</strong> nas imagens.</p></li></ul><ul id="1a0ef7c0-1d61-80a3-81f1-de8879c1db7d" class="bulleted-list"><li style="list-style-type:disc">📜 <strong>Bilhete suspeito:</strong><p id="1a0ef7c0-1d61-800f-9f9e-f36a75285530" class="">Um bilhete foi encontrado no chão da sala, perto da gaveta onde o professor costumava guardar o pendrive. O bilhete tem um <strong>código quebrado</strong>, possivelmente uma pista para o acesso ao sistema ou ao próprio código perdido.</p></li></ul><ul id="1a0ef7c0-1d61-80cb-a56c-ea70c6e2bbc0" class="bulleted-list"><li style="list-style-type:disc">🖊️ <strong>Lista de alunos que estavam na aula:</strong><p id="1a0ef7c0-1d61-8028-a848-cf42e3f9e72f" class="">O professor deixou registrado quem estava presente no laboratório de informática naquele dia. O grupo precisa analisar <strong>quem estava presente no momento exato do desaparecimento</strong> e ver se algum desses alunos tem <strong>algo em comum</strong> ou <strong>foi visto perto da gaveta</strong>.</p></li></ul><h3 id="1a0ef7c0-1d61-80d9-ab4d-e0a2383d849d" class=""><strong>Desafio:</strong></h3><p id="1a0ef7c0-1d61-807d-a4a8-d345e2240a65" class="">Cada equipe precisa <strong>analisar as pistas e decidir quais dados são mais relevantes</strong> para a investigação. Com base nas pistas coletadas, as equipes devem <strong>formular hipóteses</strong> sobre o que aconteceu e começar a planejar como buscar mais informações para <strong>confirmar suas suposições</strong>.</p><hr id="1a0ef7c0-1d61-807b-9f73-f6a548f2a2dc"/><h2 id="1a0ef7c0-1d61-8098-8c58-ff014b3485c8" class=""><strong>📊 PASSO 3 – Escolhendo Métodos de Coleta de Dados (10 min)</strong></h2><p id="1a0ef7c0-1d61-804c-8ab8-f1fecf8b3640" class="">Agora que os detetives têm <strong>pistas</strong> sobre o desaparecimento do pendrive, é hora de <strong>descobrir mais informações</strong> para resolver o caso.</p><h3 id="1a0ef7c0-1d61-80b7-ac28-e78dd6d44cbd" class="">✅ <strong>Opções de Coleta de Dados:</strong></h3><p id="1a0ef7c0-1d61-80d7-b14e-c2737e3ae719" class="">1️⃣ <strong>Entrevistas</strong></p><p id="1a0ef7c0-1d61-808c-83bd-eb660541dd1d" class="">Falar com os <strong>suspeitos</strong> e <strong>testemunhas</strong> pode fornecer detalhes cruciais. Os grupos podem buscar <strong>informações adicionais</strong> sobre o que aconteceu no momento exato do desaparecimento do pendrive. Eles também podem questionar se alguém percebeu algo estranho ou se alguém estava com pressa naquele horário.</p><p id="1a0ef7c0-1d61-8066-a0d1-dff74d266a6a" class=""><strong>Exemplo de perguntas:</strong></p><ul id="1a0ef7c0-1d61-8093-8c10-e0e782679a06" class="bulleted-list"><li style="list-style-type:disc">&quot;Você estava perto da gaveta onde o professor guarda o pendrive?&quot;</li></ul><ul id="1a0ef7c0-1d61-80df-9035-ef4f0f02ad2b" class="bulleted-list"><li style="list-style-type:disc">&quot;Alguém entrou ou saiu do laboratório de forma suspeita durante a aula?&quot;</li></ul><p id="1a0ef7c0-1d61-802a-b9a2-d37ac27ab62c" class="">
+</p><p id="1a0ef7c0-1d61-8056-ae60-e89fba8b6103" class="">2️⃣ <strong>Análise de registros</strong></p><p id="1a0ef7c0-1d61-803e-ab34-d72eb1ee5383" class="">Conferir <strong>quem acessou os computadores naquele horário</strong> pode ajudar a identificar se algum aluno usou um computador após o professor guardar o pendrive na gaveta. Esse método pode ser útil para descobrir <strong>quem esteve mais tempo perto da área onde o pendrive foi armazenado</strong>.</p><p id="1a0ef7c0-1d61-80ed-b18a-ffbad1f216b9" class=""><strong>Exemplo de ação:</strong></p><ul id="1a0ef7c0-1d61-806c-8820-f79b47d63fb9" class="bulleted-list"><li style="list-style-type:disc">Verificar os <strong>registros de login</strong> ou o histórico de atividades dos computadores da sala.</li></ul><p id="1a0ef7c0-1d61-80a8-887a-d506a530a660" class="">
+</p><p id="1a0ef7c0-1d61-807b-8987-d3d4288c61ea" class="">3️⃣ <strong>Verificação de objetos</strong></p><p id="1a0ef7c0-1d61-80ee-9857-f4c48e8a74b2" class=""><strong>Procurar pistas físicas</strong> no laboratório, como <strong>digitais no pendrive</strong>, um <strong>celular com mensagens suspeitas</strong> ou qualquer outro objeto que tenha sido deixado para trás. Essa opção envolve buscar indícios tangíveis que possam ter sido deixados pelo responsável pelo desaparecimento.</p><p id="1a0ef7c0-1d61-80d6-b839-ff16c0f2c5ad" class=""><strong>Exemplo de ação:</strong></p><ul id="1a0ef7c0-1d61-805b-8af4-e4cc936c3451" class="bulleted-list"><li style="list-style-type:disc">Procurar por <strong>impressões digitais</strong> no computador ou no pendrive perdido, ou checar se há <strong>mensagens</strong> no celular de algum suspeito que se refiram ao código ou ao pendrive.</li></ul><p id="1a0ef7c0-1d61-802c-b6c2-f0f732ccf33f" class="">
+</p><p id="1a0ef7c0-1d61-8030-8728-c7b447ed935f" class="">4️⃣ <strong>Decodificação do bilhete misterioso</strong></p><p id="1a0ef7c0-1d61-8093-a5f1-f87f98a10a2a" class="">O bilhete encontrado no chão tem um <strong>código quebrado</strong>. A equipe pode tentar <strong>decodificá-lo</strong> para ver se ele tem alguma relação com o código de acesso do servidor ou alguma pista sobre quem pode ter roubado o pendrive.</p><p id="1a0ef7c0-1d61-807f-ac82-c14872eb795f" class=""><strong>Exemplo de ação:</strong></p><ul id="1a0ef7c0-1d61-8069-81a0-d8fada2ce566" class="bulleted-list"><li style="list-style-type:disc">Tentar <strong>reconstruir</strong> o código do bilhete, buscando possíveis padrões ou combinações, e compará-lo com outras pistas, como o horário em que o pendrive sumiu.</li></ul><hr id="1a0ef7c0-1d61-803b-9bd3-ee9342b50b6d"/><h3 id="1a0ef7c0-1d61-8097-8917-da0e45a7618c" class=""><strong>Desafio:</strong></h3><p id="1a0ef7c0-1d61-807b-869c-c22be9881985" class="">Cada grupo deve <strong>justificar qual método escolheram e por quê</strong>. Eles precisam <strong>explicar como acreditam que esse método os ajudará</strong> a encontrar mais pistas e, finalmente, solucionar o mistério.</p><p id="1a0ef7c0-1d61-80e0-a7d8-ff5882be6567" class=""><strong>Objetivo:</strong></p><p id="1a0ef7c0-1d61-80aa-bd43-d9c8462def88" class="">Fazer com que os alunos analisem as pistas de forma crítica e escolham o método mais adequado para avançar na investigação. Esse passo também os desafia a <strong>justificar suas escolhas</strong> de maneira lógica, utilizando as pistas já coletadas.</p><hr id="1a0ef7c0-1d61-8057-af53-f68cc2369d1d"/><h2 id="1a0ef7c0-1d61-809e-80d3-e938b9497c96" class=""><strong>🧠 PASSO 4 – Teorias e Acusações (10 min)</strong></h2><p id="1a0ef7c0-1d61-807c-8a28-ee73fb453c25" class="">Agora é hora de <strong>finalizar a investigação</strong>! Com base nos <strong>dados coletados</strong> até o momento, cada grupo deve formular uma <strong>teoria do crime</strong> e apresentar suas conclusões.</p><h3 id="1a0ef7c0-1d61-80fc-b960-d3341d9709c7" class=""><strong>Desafio:</strong></h3><p id="1a0ef7c0-1d61-8062-ad78-d770fa219c68" class="">Cada grupo deve responder às seguintes perguntas:</p><ul id="1a0ef7c0-1d61-80ee-8872-f62c8de146df" class="bulleted-list"><li style="list-style-type:disc"><strong>Quem pegou o pendrive?</strong><ul id="1a0ef7c0-1d61-801e-b936-c641dda84aca" class="bulleted-list"><li style="list-style-type:circle">Baseado nas pistas, quem é o principal suspeito? Qual suspeito tem mais indícios de estar envolvido?</li></ul></li></ul><ul id="1a0ef7c0-1d61-80be-89a2-e01faf9b642b" class="bulleted-list"><li style="list-style-type:disc"><strong>Como foi feito?</strong><ul id="1a0ef7c0-1d61-8088-924c-dfc14ab409fb" class="bulleted-list"><li style="list-style-type:circle">Quais foram os métodos usados pelo criminoso para roubar o pendrive? Eles tiveram acesso à chave do laboratório? O que aconteceu durante o horário que o pendrive sumiu?</li></ul></li></ul><ul id="1a0ef7c0-1d61-8069-9ad7-e87186d4918f" class="bulleted-list"><li style="list-style-type:disc"><strong>Qual foi a motivação?</strong><ul id="1a0ef7c0-1d61-80ed-8169-f80e237acee4" class="bulleted-list"><li style="list-style-type:circle">Por que alguém faria isso? O que estava em jogo para o criminoso? Foi por motivo pessoal, acadêmico ou outra razão?</li></ul></li></ul><ul id="1a0ef7c0-1d61-8098-917b-f542018b7c90" class="bulleted-list"><li style="list-style-type:disc"><strong>Quais dados foram mais úteis para solucionar o mistério?</strong><ul id="1a0ef7c0-1d61-8005-824d-f3c7e2a0e1e2" class="bulleted-list"><li style="list-style-type:circle">Quais pistas ajudaram mais na formulação de sua teoria? Foi a imagem da câmera, o bilhete suspeito, a lista de alunos ou outro dado?</li></ul></li></ul><h3 id="1a0ef7c0-1d61-8001-b3ca-e3f42b2d8772" class=""><strong>Apresentação:</strong></h3><p id="1a0ef7c0-1d61-806b-b81d-cd3d9dc141a9" class="">Cada grupo terá <strong>2 minutos</strong> para apresentar sua teoria para a turma, explicando <strong>como chegaram à conclusão</strong> e <strong>quais pistas foram determinantes</strong> para resolver o caso. Durante a apresentação, os outros grupos podem <strong>questionar</strong> e <strong>desafiar</strong> a teoria apresentada, tentando <strong>encontrar falhas ou evidências contraditórias</strong>. O objetivo é convencer os outros de que sua investigação e teoria são as mais plausíveis.</p><hr id="1a0ef7c0-1d61-8078-b653-ce21f203d929"/><h2 id="1a0ef7c0-1d61-80fd-b220-e55cc6c1ad71" class=""><strong>⚡ PASSO 5 – Revelação e Reflexão (10 min)</strong></h2><p id="1a0ef7c0-1d61-8022-89cc-ec020d01bdac" class="">Agora que as <strong>teorias foram apresentadas</strong> e o caso está fechado, é hora de revelar a verdadeira resolução do mistério e refletir sobre o processo.</p><h3 id="1a0ef7c0-1d61-80de-a5da-e406e852cfd8" class=""><strong>Resolução do Mistério (Revelação):</strong></h3><ul id="1a0ef7c0-1d61-80b5-8386-e9eb093bb1f6" class="bulleted-list"><li style="list-style-type:disc">O <strong>pendrive foi roubado por um aluno específico</strong>, que estava presente no laboratório na hora exata do desaparecimento. Ele <strong>usou o bilhete suspeito</strong> para tentar esconder suas intenções e distraírem os outros.</li></ul><ul id="1a0ef7c0-1d61-80ff-9811-d4508604e6be" class="bulleted-list"><li style="list-style-type:disc">A motivação era <strong>evitar a perda de pontos em um TCC</strong>, que estava armazenado no servidor. O aluno sabia que o professor usaria o código de acesso para corrigir os arquivos, então ele decidiu apagar os projetos de outros para <strong>apagar os vestígios de seu próprio erro</strong>.</li></ul><ul id="1a0ef7c0-1d61-8042-9b55-dc42de433719" class="bulleted-list"><li style="list-style-type:disc"><strong>As imagens da câmera</strong> e a <strong>lista de alunos presentes</strong> foram fundamentais para identificar o suspeito, enquanto o <strong>bilhete com o código quebrado</strong> revelou um padrão que levou à descoberta do local do pendrive.</li></ul><h3 id="1a0ef7c0-1d61-8000-89ad-ec21d8699f53" class=""><strong>Discussão (Reflexão):</strong></h3><p id="1a0ef7c0-1d61-80be-82dd-d62fbbbc6e1a" class="">Agora, o professor conduz a reflexão sobre todo o processo de investigação:</p><ul id="1a0ef7c0-1d61-80cd-8c1b-eb0246e49c0d" class="bulleted-list"><li style="list-style-type:disc"><strong>Quais dados realmente ajudaram na solução?</strong><ul id="1a0ef7c0-1d61-80b9-b658-c048ded85bf3" class="bulleted-list"><li style="list-style-type:circle">Quais pistas se mostraram cruciais para resolver o mistério? As imagens da câmera? A lista de alunos? O bilhete? Ou algo mais?</li></ul></li></ul><ul id="1a0ef7c0-1d61-800a-bd89-ded8145709b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Os métodos de coleta foram eficazes?</strong><ul id="1a0ef7c0-1d61-80bd-85cb-f532fabc13f1" class="bulleted-list"><li style="list-style-type:circle">A coleta de dados foi bem feita? O que funcionou? O que poderia ter sido feito de maneira diferente para obter melhores resultados?</li></ul></li></ul><ul id="1a0ef7c0-1d61-8009-9c36-e7b238ac1ecd" class="bulleted-list"><li style="list-style-type:disc"><strong>Se pudessem refazer a investigação, o que fariam diferente?</strong><ul id="1a0ef7c0-1d61-80b1-8dfe-ed037a031cfa" class="bulleted-list"><li style="list-style-type:circle">Caso o mistério fosse reaberto, como as equipes poderiam melhorar suas estratégias de coleta de dados e análise? Eles perceberam algum ponto em que poderiam ter explorado mais ou investigado de forma mais profunda?</li></ul></li></ul><p id="1a0ef7c0-1d61-80cb-96c5-ea9afc171f5a" class="">A reflexão final serve para que os alunos compreendam a importância de <strong>organizar, analisar e aplicar dados</strong> de forma crítica para resolver problemas reais e como esses métodos podem ser usados no desenvolvimento de sistemas e na resolução de situações cotidianas.</p><hr id="1a0ef7c0-1d61-80a6-a5ec-cc1ad7ce301d"/><h2 id="1a0ef7c0-1d61-8073-a088-cc63d2040f42" class=""><strong>🔹 RECURSOS PARA A ATIVIDADE</strong></h2><p id="1a0ef7c0-1d61-80fe-9160-dd758b39c391" class="">✔️ <strong>Dossiês impressos</strong> com pistas e suspeitos</p><p id="1a0ef7c0-1d61-8092-84a9-c54d4cc98f49" class="">✔️ <strong>Papéis com bilhetes codificados para decifrar</strong></p><p id="1a0ef7c0-1d61-804d-86b5-c47fd494ce36" class="">✔️ <strong>Lista de registros fictícios para análise</strong></p><p id="1a0ef7c0-1d61-80e5-be24-e08f7de965b9" class="">✔️ <strong>Envelopes secretos</strong> com informações que serão reveladas no decorrer da atividade</p><hr id="1a0ef7c0-1d61-800e-ac7d-e06cc9bea2dc"/><h2 id="1a0ef7c0-1d61-8085-bf81-eb156af7cc35" class=""><strong>🚀 POR QUE ESSA ATIVIDADE É PODEROSA?</strong></h2><p id="1a0ef7c0-1d61-8050-b7ee-fca9f88614ee" class="">✅ Encoraja os alunos a <strong>pensarem criticamente</strong> sobre dados</p><p id="1a0ef7c0-1d61-8019-8369-e5a60ceef8e2" class="">✅ Os alunos aplicam <strong>métodos de coleta de dados de forma prática</strong></p><p id="1a0ef7c0-1d61-80ba-8423-c4ca4840608e" class="">✅ <strong>Simula um problema real de análise e organização de dados</strong></p><p id="1a0ef7c0-1d61-80d3-a7f5-fd8386af9901" class="">✅ <strong>A gamificação torna a aula divertida e interativa</strong></p><p id="1a0ef7c0-1d61-80d3-a9cd-fc6a234597d3" class="">✅ O mistério mantém os alunos <strong>motivados e engajados</strong></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
